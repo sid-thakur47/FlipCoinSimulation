@@ -56,6 +56,5 @@ function start() {
 			flipSide=$j
 			main
 	done
-	
 }
 start
