@@ -16,6 +16,10 @@ function getCombination() {
 		then
 			coinFace="$(generateRandom)"
 	fi
+	if [ $flipSide -eq 2 ]
+		then
+			coinFace="$(generateRandom)$(generateRandom)"
+	fi
 	echo $coinFace
 }
 
@@ -46,5 +50,12 @@ function main() {
 	unset coinToss
 }
 
-flipSide=1
-main
+function start() {
+	for ((j=1;j<=2;j++))
+		do
+			flipSide=$j
+			main
+	done
+	
+}
+start
