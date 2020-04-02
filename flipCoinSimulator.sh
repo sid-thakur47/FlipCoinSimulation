@@ -15,10 +15,11 @@ function getCombination() {
 	if [ $flipSide -eq 1 ]
 		then
 			coinFace="$(generateRandom)"
-	fi
-	if [ $flipSide -eq 2 ]
+	elif [ $flipSide -eq 2 ]
 		then
 			coinFace="$(generateRandom)$(generateRandom)"
+		else
+			coinFace="$(generateRandom)$(generateRandom)""$(generateRandom)"
 	fi
 	echo $coinFace
 }
@@ -51,7 +52,7 @@ function main() {
 }
 
 function start() {
-	for ((j=1;j<=2;j++))
+	for ((j=1;j<=3;j++))
 		do
 			flipSide=$j
 			main
