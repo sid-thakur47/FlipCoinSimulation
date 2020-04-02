@@ -15,8 +15,8 @@ function getCombination() {
 	if [ $flipSide -eq 1 ]
 		then
 			coinFace="$(generateRandom)"
-	elif [ $flipSide -eq 2 ]
-		then
+		elif [ $flipSide -eq 2 ]
+			then
 			coinFace="$(generateRandom)$(generateRandom)"
 		else
 			coinFace="$(generateRandom)$(generateRandom)""$(generateRandom)"
@@ -38,6 +38,21 @@ function getPercentage() {
 	done
 }
 
+function findWinCombination() {
+maxValue=0
+key=1
+	for i in "${!coinToss[@]}"
+		do
+		if [ ${coinToss[$i]} -gt $maxValue ]
+			then
+			maxValue=${coinToss[$i]}
+			key=$i
+		fi
+	done
+echo "Winning Combination is: "$key
+
+}
+
 function main() {
 	declare -A coinToss
 	for ((i=1;i<=$flip;i++))
@@ -48,6 +63,7 @@ function main() {
 	echo "Sides:"${!coinToss[*]} 
 	echo "Times:"${coinToss[*]}
 	getPercentage
+	findWinCombination
 	unset coinToss
 }
 
