@@ -45,11 +45,11 @@ function getPercentage() {
 function winningCombination() {
 	arrLargest=($(echo ${coinToss[*]}|   tr " " "\n" | sort -nr))
 	for k in "${!coinToss[@]}"
-	do
-		if [ ${arrLargest[0]} -eq ${coinToss[$k]} ] 
-		then
-			echo "Winning Combination is:"$k
-		fi
+		do
+			if [ ${arrLargest[0]} -eq ${coinToss[$k]} ] 
+			then
+				echo "Winning Combination is:"$k
+			fi
 	done
 }
 
