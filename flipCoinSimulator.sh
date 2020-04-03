@@ -6,13 +6,13 @@ function generateRandom() {
 }
 
 function coinToss() {
-generateRandom
-	if [ $random -eq 1 ]
-	then
-		echo "H"
-	else
-		echo "T"
-	fi
+	generateRandom
+		if [ $random -eq 1 ]
+		then
+			echo "H"
+		else
+			echo "T"
+		fi
 }
 
 function getCombination() {
@@ -30,25 +30,24 @@ function calculatePercentage() {
 
 function getPercentage() {
 	for i in "${!coinToss[@]}"
-	do
-		currentValue=${coinToss[$i]}
-		headTailPercent="$(calculatePercentage)"
-		echo "percentage of $i side is $headTailPercent %"
+		do
+			currentValue=${coinToss[$i]}
+			headTailPercent="$(calculatePercentage)"
+			echo "percentage of $i side is $headTailPercent %"
 	done
 }
 
-function main() {
+function computeCoinToss() {
 	declare -A coinToss
-	for ((i=1;i<=$FLIP;i++))
-	do
-		combination="$(getCombination)"
-		coinToss[$combination]=$((${coinToss[$combination]}+1))
-	done
-	echo "Sides:"${!coinToss[*]} 
-	echo "Times:"${coinToss[*]}
-	getPercentage
-	unset coinToss
+		for ((i=1;i<=$FLIP;i++))
+			do
+				combination="$(getCombination)"
+				coinToss[$combination]=$((${coinToss[$combination]}+1))
+		done
+		echo "Sides:"${!coinToss[*]} 
+		echo "Times:"${coinToss[*]}
+		getPercentage
+		unset coinToss
 }
-
 flipSide=1
-main
+computeCoinToss
