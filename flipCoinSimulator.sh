@@ -18,7 +18,7 @@ function coinToss() {
 function getCombination() {
 	if [ $flipSide -eq 1 ]
 	then
-			coinFace="$(coinToss)"
+		coinFace="$(coinToss)"
 	fi
 	echo $coinFace
 }
