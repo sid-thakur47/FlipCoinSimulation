@@ -31,9 +31,9 @@ function calculatePercentage() {
 function getPercentage() {
 	for i in "${!coinToss[@]}"
 		do
-			currentValue=${coinToss[$i]}
-			headTailPercent="$(calculatePercentage)"
-			echo "percentage of $i side is $headTailPercent %"
+		currentValue=${coinToss[$i]}
+		headTailPercent="$(calculatePercentage)"
+		echo "percentage of $i side is $headTailPercent %"
 	done
 }
 
@@ -41,8 +41,8 @@ function computeCoinToss() {
 	declare -A coinToss
 		for ((i=1;i<=$FLIP;i++))
 			do
-				combination="$(getCombination)"
-				coinToss[$combination]=$((${coinToss[$combination]}+1))
+			combination="$(getCombination)"
+			coinToss[$combination]=$((${coinToss[$combination]}+1))
 		done
 		echo "Sides:"${!coinToss[*]} 
 		echo "Times:"${coinToss[*]}
